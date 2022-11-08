@@ -21,8 +21,8 @@ class AssetTransfer extends Contract {
                 Size: 5,
                 Owner: 'Tomoko',
                 AppraisedValue: 300,
-                //QuotedValue : 350
-                //MarketValue : 325
+                QuotedValue : 350
+                MarketValue : 325
             },
             {
                 ID: 'asset2',
@@ -30,8 +30,8 @@ class AssetTransfer extends Contract {
                 Size: 5,
                 Owner: 'Brad',
                 AppraisedValue: 400,
-                //QuotedValue : 450
-                //MarketValue : 425
+                QuotedValue : 450
+                MarketValue : 425
             },
             {
                 ID: 'asset3',
@@ -39,8 +39,8 @@ class AssetTransfer extends Contract {
                 Size: 10,
                 Owner: 'Jin Soo',
                 AppraisedValue: 500,
-                //QuotedValue : 510
-                //MarketValue : 525
+                QuotedValue : 510
+                MarketValue : 525
             },
             {
                 ID: 'asset4',
@@ -48,8 +48,8 @@ class AssetTransfer extends Contract {
                 Size: 10,
                 Owner: 'Max',
                 AppraisedValue: 600,
-                //QuotedValue : 650
-                //MarketValue : 625
+                QuotedValue : 650
+                MarketValue : 625
             },
             {
                 ID: 'asset5',
@@ -57,8 +57,8 @@ class AssetTransfer extends Contract {
                 Size: 15,
                 Owner: 'Adriana',
                 AppraisedValue: 700,
-                //QuotedValue : 750
-                //MarketValue : 725
+                QuotedValue : 750
+                MarketValue : 725
             },
             {
                 ID: 'asset6',
@@ -66,8 +66,8 @@ class AssetTransfer extends Contract {
                 Size: 15,
                 Owner: 'Michel',
                 AppraisedValue: 800,
-                //QuotedValue : 825
-                //MarketValue : 825
+                QuotedValue : 825
+                MarketValue : 825
             },
         ];
 
@@ -82,7 +82,7 @@ class AssetTransfer extends Contract {
     }
 
     // CreateAsset issues a new asset to the world state with given details.
-    async CreateAsset(ctx, id, color, size, owner, appraisedValue) //quotedvalue,marketvalue
+    async CreateAsset(ctx, id, color, size, owner, appraisedValue,quotedvalue,marketvalue)
     {
         const exists = await this.AssetExists(ctx, id);
         if (exists) {
@@ -95,8 +95,8 @@ class AssetTransfer extends Contract {
             Size: size,
             Owner: owner,
             AppraisedValue: appraisedValue,
-            //QuotedValue : quotedvalue
-            //MarketValue : marketvalue
+            QuotedValue : quotedvalue
+            MarketValue : marketvalue
         };
         //we insert data in alphabetic order using 'json-stringify-deterministic' and 'sort-keys-recursive'
         await ctx.stub.putState(id, Buffer.from(stringify(sortKeysRecursive(asset))));
@@ -113,7 +113,7 @@ class AssetTransfer extends Contract {
     }
 
     // UpdateAsset updates an existing asset in the world state with provided parameters.
-    async UpdateAsset(ctx, id, color, size, owner, appraisedValue) //quotedvalue,marketvalue
+    async UpdateAsset(ctx, id, color, size, owner, appraisedValue, quotedvalue,marketvalue)
     {
         const exists = await this.AssetExists(ctx, id);
         if (!exists) {
@@ -127,8 +127,8 @@ class AssetTransfer extends Contract {
             Size: size,
             Owner: owner,
             AppraisedValue: appraisedValue,
-            //QuotedValue : quotedvalue,
-            //MarketValue : marketvalue,
+            QuotedValue : quotedvalue,
+            MarketValue : marketvalue,
         };
         // we insert data in alphabetic order using 'json-stringify-deterministic' and 'sort-keys-recursive'
         return ctx.stub.putState(id, Buffer.from(stringify(sortKeysRecursive(updatedAsset))));
