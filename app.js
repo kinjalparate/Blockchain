@@ -166,7 +166,7 @@ async function main() {
 			result = await contract.evaluateTransaction('ReadAsset', 'asset1');
 			console.log(`*** Result: ${prettyJSONString(result.toString())}`);
 
-            console.log('\n--> Evaluate Transaction: CheckAssetValue, function returns all the current assets on the ledger');
+            		console.log('\n--> Evaluate Transaction: CheckAssetValue, function returns all the current assets on the ledger');
 			result = await contract.evaluateTransaction('CheckAssestValue');
 			console.log(`*** Result: ${prettyJSONString(result.toString())}`);
             
